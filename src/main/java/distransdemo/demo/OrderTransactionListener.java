@@ -43,14 +43,14 @@ public class OrderTransactionListener implements RocketMQLocalTransactionListene
     int status = new Random().nextInt(3);
     switch (status) {
       case 0:
-        retState = RocketMQLocalTransactionState.UNKNOWN;
+        retState = RocketMQLocalTransactionState.UNKNOWN; //这种状态，会再查一次
         break;
       case 1:
-        retState = RocketMQLocalTransactionState.COMMIT;
+        retState = RocketMQLocalTransactionState.COMMIT; //这种状态，提交事务消息，B系统开始执行本地事务
         break;
       case 2:
       default:
-        retState = RocketMQLocalTransactionState.ROLLBACK;
+        retState = RocketMQLocalTransactionState.ROLLBACK; //这种状态，回滚事务消息
         break;
     }
     log.info("回查事务状态, orderId = {}, status = {}, retState = {}",
