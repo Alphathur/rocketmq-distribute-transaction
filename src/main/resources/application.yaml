@@ -1,0 +1,9 @@
+rocketmq:
+  name-server: localhost:9876
+  producer:
+    group: default-group
+    sendMessageTimeout: 5000
+
+demo:
+  rocketmq:
+    orderTopic: order-paid-topic
